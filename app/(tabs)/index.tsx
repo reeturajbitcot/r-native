@@ -1,10 +1,11 @@
+import MovieCard from "@/components/MovieCard";
 import SearchBar from "@/components/SearchBar";
 import { icons } from "@/constants/icons";
 import { images } from "@/constants/images";
 import { fetchMovies } from "@/services/api";
 import useFetch from "@/services/useFetch";
 import { useRouter } from "expo-router";
-import { ActivityIndicator, FlatListComponent, Image, ScrollView, Text, View } from "react-native";
+import { ActivityIndicator, FlatList, Image, ScrollView, Text, View } from "react-native";
 import "../globals.css";
  
 export default function App() {
@@ -32,7 +33,19 @@ export default function App() {
              />
              <>
               <Text className="text-lg text-whtie font-bold mt-5 mb-3">Latest Movies</Text>
-              <FlatListComponent></FlatListComponent>
+              <FlatList 
+                data={movies} 
+                keyExtractor={(item) => item.id.toString()} numColumns={3}
+                columnWrapperStyle={{
+                  justifyContent: "flex-start",
+                  gap: 20,
+                  paddingRight:5,
+                  marginBottom: 10,
+                }}
+                scrollEnabled={false}
+                renderItem={(item) =>(
+                  <MovieCard {...item}  />
+                )}/>
              </>
           </View>
         )}
