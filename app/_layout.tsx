@@ -5,7 +5,7 @@ export default function RootLayout() {
   return  (
   <Stack >
     <Stack.Screen 
-      name="(tabls)"
+      name="(tabs)"
       options= {{headerShown: false}}
     />
     <Stack.Screen 
